@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/video_game_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradientlist"
+    android:weightSum="15">
+
+    <ImageView
+        android:id="@+id/cover_game"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/name_game"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        />
+
+</LinearLayout>
