@@ -14,6 +14,15 @@ import com.guillot.exercicementor.R;
 import java.util.List;
 
 public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.MyViewHolder> {
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -23,14 +32,26 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
         MyViewHolder(View itemView) {
             super(itemView);
 
-            mNameVG= itemView.findViewById(R.id.name_game);
-            mCoverVG= itemView.findViewById(R.id.cover_game);
-        }
+            mNameVG = itemView.findViewById(R.id.name_game);
+            mCoverVG = itemView.findViewById(R.id.cover_game);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+        }
         void display(dataVideoGames videoGame) {
             mNameVG.setText(videoGame.getName());
             mCoverVG.setImageResource(videoGame.getCover());
         }
+
     }
 
     private List<dataVideoGames> bestGames;
@@ -47,6 +68,7 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
         return new MyViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.display(bestGames.get(position));
@@ -56,4 +78,5 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
     public int getItemCount() {
         return bestGames.size();
     }
+
 }

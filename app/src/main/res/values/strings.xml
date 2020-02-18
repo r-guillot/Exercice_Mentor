@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Exercice Mentor</string>
     <string name="Sign_Up"><u>Sign Up for Facebook</u></string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn">Log In</string>
+
 </resources>
