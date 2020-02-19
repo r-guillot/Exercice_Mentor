@@ -1,8 +1,10 @@
 package com.guillot.exercicementor.controller.controller;
 
+import android.net.sip.SipSession;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.guillot.exercicementor.R;
 
+
 import java.util.List;
 
-public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.MyViewHolder> {
+public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.MyViewHolder>{
     private OnItemClickListener mListener;
+
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -28,12 +32,14 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
 
         private TextView mNameVG;
         private ImageView mCoverVG;
+        private ImageButton mTrashBtn;
 
         MyViewHolder(View itemView) {
             super(itemView);
 
             mNameVG = itemView.findViewById(R.id.name_game);
             mCoverVG = itemView.findViewById(R.id.cover_game);
+            mTrashBtn = itemView.findViewById(R.id.trash_img);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -47,6 +53,7 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
                 }
             });
         }
+
         void display(dataVideoGames videoGame) {
             mNameVG.setText(videoGame.getName());
             mCoverVG.setImageResource(videoGame.getCover());

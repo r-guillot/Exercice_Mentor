@@ -37,4 +37,11 @@ public class VideoGamesDetailsActivity extends AppCompatActivity {
         mDetailResume.setText(resumeGame);
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent detailIntent = new Intent(this, ListActivity.class);
+        startActivity(detailIntent);
+        finish();
+    }
+
 }

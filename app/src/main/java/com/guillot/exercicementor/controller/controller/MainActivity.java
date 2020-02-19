@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         mUnderline.setText("Sign Up for Facebook");
 
 
+        //todo A supprimer
+        mTypeEmail.setText(mGoodEmail);
+        mTypePassword.setText(mGoodPassword);
 
 
 
