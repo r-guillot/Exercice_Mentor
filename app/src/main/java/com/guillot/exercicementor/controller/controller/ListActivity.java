@@ -81,6 +81,7 @@ public class ListActivity extends AppCompatActivity implements VideoGamesAdapter
     }
 
     public void addItem(int position) {
+
         bestGames.add(new dataVideoGames("Title",R.drawable.interrogation,"Resume"));
         mAdapter.notifyItemInserted(position);
 
