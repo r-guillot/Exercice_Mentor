@@ -11,6 +11,7 @@ public class dataVideoGames {
         this.resume=resume;
     }
 
+
     public String getName() {
         return name;
     }

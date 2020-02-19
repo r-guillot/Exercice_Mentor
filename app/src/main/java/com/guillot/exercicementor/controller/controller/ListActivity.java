@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.guillot.exercicementor.R;
 
 import java.util.ArrayList;
@@ -20,6 +23,8 @@ public class ListActivity extends AppCompatActivity implements VideoGamesAdapter
     private RecyclerView mRecyclerView;
     private ArrayList<dataVideoGames> bestGames;
     private VideoGamesAdapter mAdapter;
+    private FloatingActionButton mFAB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class ListActivity extends AppCompatActivity implements VideoGamesAdapter
         setContentView(R.layout.activity_list);
 
         mRecyclerView = findViewById(R.id.recycler_view);
+        mFAB = findViewById(R.id.fab_add_btn);
 
         bestGames = new ArrayList<>();
 
@@ -44,7 +50,7 @@ public class ListActivity extends AppCompatActivity implements VideoGamesAdapter
                 "Mass Effect est une série de jeux vidéo d'action-RPG se déroulant dans un univers de science-fiction et produite par BioWare"));
         bestGames.add(new dataVideoGames("Total War Saga: Thrones of Britannia", R.drawable.tw,
                 "Total War Saga : Thrones of Britannia est un jeu vidéo de stratégie au tour par tour et de tactique en temps réel développé par Creative Assembly et publié par Sega le 3 mai 2018."));
-        bestGames.add(new dataVideoGames("God of War", R.drawable.godofwar,
+        bestGames.add(new dataVideoGames("God of War", R.drawable. godofwar,
                 "God of War est une série de jeux vidéo d'action-aventure de type beat them all débutée en 2005, produite par Sony Computer Entertainment."));
         bestGames.add(new dataVideoGames("South Park : The Stick Of Truth", R.drawable.southpark,
                 "South Park : Le Bâton de la vérité est un jeu vidéo de rôle, basé sur l'univers du dessin animé South Park, développé par Obsidian Entertainment et édité par Ubisoft. D'abord prévu pour le 5 mars 2013, il est repoussé à la suite des problèmes financiers de THQ."));
@@ -65,6 +71,24 @@ public class ListActivity extends AppCompatActivity implements VideoGamesAdapter
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        mFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = bestGames.size();
+                addItem(position);
+            }
+        });
+    }
+
+    public void addItem(int position) {
+        bestGames.add(new dataVideoGames("Title",R.drawable.interrogation,"Resume"));
+        mAdapter.notifyItemInserted(position);
+
+    }
+
+    public void deleteItem(int position) {
+        bestGames.remove(position);
+        mAdapter.notifyItemRemoved(position);
     }
 
     @Override
@@ -79,5 +103,12 @@ public class ListActivity extends AppCompatActivity implements VideoGamesAdapter
         startActivity(detailIntent);
         finish();
     }
+
+    @Override
+    public void onDeleteClick(int position) {
+        deleteItem(position);
+    }
+
+
 
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.guillot.exercicementor.R;
 
 
@@ -22,6 +23,7 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+        void onDeleteClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -39,7 +41,7 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
 
             mNameVG = itemView.findViewById(R.id.name_game);
             mCoverVG = itemView.findViewById(R.id.cover_game);
-            mTrashBtn = itemView.findViewById(R.id.trash_img);
+            mTrashBtn = itemView.findViewById(R.id.trash_btn);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -52,6 +54,19 @@ public class VideoGamesAdapter extends RecyclerView.Adapter<VideoGamesAdapter.My
                     }
                 }
             });
+
+            mTrashBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onDeleteClick(position);
+                        }
+                    }
+                }
+            });
+
         }
 
         void display(dataVideoGames videoGame) {

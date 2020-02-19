@@ -26,13 +26,15 @@
         />
 
     <ImageButton
-        android:id="@+id/trash_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/trash_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@color/gray"
         android:src="@drawable/trash"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="35dp"
         />
 
 </LinearLayout>
+
+

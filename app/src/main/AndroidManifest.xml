@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.controller.VideoGamesDetailsActivity"></activity>
+        <activity android:name=".controller.controller.EditDetailsActivity"></activity>
+        <activity android:name=".controller.controller.VideoGamesDetailsActivity" />
         <activity android:name=".controller.controller.ListActivity" />
         <activity android:name=".controller.controller.MainActivity">
             <intent-filter>
